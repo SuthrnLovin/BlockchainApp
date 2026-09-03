@@ -30,6 +30,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlockchainApp\blockchain.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BlockchainApp\models.py">
       <SubType>Code</SubType>
     </Compile>

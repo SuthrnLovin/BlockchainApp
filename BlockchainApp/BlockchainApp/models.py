@@ -15,3 +15,4 @@ class Block(models.Model):
     def hash(self):
         block_string = json.dumps(self.__dict__, sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
+
