@@ -1,31 +1,34 @@
-import django
-from .models import Unit
+from django.test import SimpleTestCase
+from .blockchain import Blockchain
 from django.test import TestCase
 
+class BlockchainValidationTests(SimpleTestCase):
 
-class UnitTest(TestCase):
-    def is_chain_valid(self):
-        if not self.chain:
-            return False
+    def setUp(self):
+        self.blockchain = Blockchain()
 
-        # Check the genesis block
-        if self.chain[0]['index'] != 1:
-            return False
+    def test_valid_genesis_block(self):
+        self.assertTrue(
+            self.blockchain.is_chain_valid()
+        )
 
-        if self.chain[0]['previous_hash'] != '1':
-            return False
+    def test_invalid_genesis_index(self):
+        self.blockchain.chain[0]["index"] = 99
 
-        # Check every block after the genesis block
-        for i in range(1, len(self.chain)):
-            current_block = self.chain[i]
-            previous_block = self.chain[i - 1]
+        self.assertFalse(
+            self.blockchain.is_chain_valid()
+        )
 
-            # Check that the block points to the correct previous block
-            if current_block['previous_hash'] != self.hash(previous_block):
-                return False
+    def test_invalid_genesis_previous_hash(self):
+        self.blockchain.chain[0]["previous_hash"] = "invalid"
 
-            # Check that block indexes are sequential
-            if current_block['index'] != previous_block['index'] + 1:
-                return False
+        self.assertFalse(
+            self.blockchain.is_chain_valid()
+        )
 
-        return True
+    def test_empty_chain_is_invalid(self):
+        self.blockchain.chain = []
+
+        self.assertFalse(
+            self.blockchain.is_chain_valid()
+        )
