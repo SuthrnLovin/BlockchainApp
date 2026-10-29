@@ -36,6 +36,9 @@
     <Compile Include="BlockchainApp\models.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BlockchainApp\test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BlockchainApp\views.py">
       <SubType>Code</SubType>
     </Compile>
