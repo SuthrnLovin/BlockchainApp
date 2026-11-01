@@ -8,7 +8,7 @@ import hashlib
 blockchain = Blockchain()
 
 def dashboard(request):
-    return render(request, "dashboard.html")
+    return render(request, dashboard.html)
 
 # blockchain.pending_transactions.append({
 #     "sender": "Alice",
