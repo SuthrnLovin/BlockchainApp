@@ -78,15 +78,15 @@ class BlockchainTests(SimpleTestCase):
         self.assertFalse(self.blockchain.is_chain_valid())
 
         #This does not work, need better validator
-        def test_tampered_last_block_is_invalid(self):
-            previous_block = self.blockchain.last_block()
+    def test_tampered_last_block_is_invalid(self):
+        previous_block = self.blockchain.last_block()
 
-            self.blockchain.new_block(
-                proof=200,
-                previous_hash=self.blockchain.hash(previous_block),
-            )
+        self.blockchain.new_block(
+            proof=200,
+            previous_hash=self.blockchain.hash(previous_block),
+        )
 
-            # Tamper with the last block
-            self.blockchain.chain[-1]["proof"] = 999
+        # Tamper with the last block
+        self.blockchain.chain[-1]["proof"] = 999
 
-            self.assertFalse(self.blockchain.is_chain_valid())
+        self.assertFalse(self.blockchain.is_chain_valid())

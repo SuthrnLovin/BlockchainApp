@@ -30,6 +30,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlockchainApp\admin.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlockchainApp\apps.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BlockchainApp\blockchain.py">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +55,7 @@
     <Compile Include="BlockchainApp\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BlockchainApp\dashboard.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
